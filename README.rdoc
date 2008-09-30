@@ -1,4 +1,4 @@
-#Barduino-Tender - The DSL for serving yourself drinks.#
+=Barduino-Tender - The DSL for serving yourself drinks.
 
 The purpose of this project is to provide a DSL to easily interact with Barduino, an Arduino based Bar Monkey developed using the RAD (Ruby Arduino Development) framework.
 
