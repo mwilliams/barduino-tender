@@ -34,10 +34,6 @@ class Recipe
     @name = name
     @ingredients = {}
   end
-  def makes(count)
-    puts "\nMakes #{count}"
-    @makes = count
-  end
 end
 
 class Context
