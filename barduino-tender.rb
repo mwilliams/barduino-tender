@@ -13,6 +13,8 @@ class Numeric
 end
 
 class Drink
+	@ingredients = {"vodka" => 1, "orange_juice" => 2}
+	
 	def description(name, &block)
     puts "#{name}"
     block.call
@@ -27,7 +29,7 @@ class Drink
 	end
 	
 	def self.dispense(ingredient, amount)
-		puts "Pouring #{amount} ounces of #{ingredient}"
+		  puts "Pouring #{amount} ounces of #{ingredient} from pump #{@ingredients[ingredient.to_s]}"
 	end
 end
 
