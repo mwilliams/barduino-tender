@@ -15,7 +15,7 @@ end
 class Drink
 	@ingredients = {"vodka" => 1, "orange_juice" => 2}
 	
-	def description(name, &block)
+	def drink(name, &block)
     puts "#{name}"
     block.call
 	end

@@ -1,4 +1,4 @@
-description 'Screwdriver' do 
+drink 'Screwdriver' do 
   serve_in 'Highball Glass'
   ingredients do
     2.ounces :vodka
