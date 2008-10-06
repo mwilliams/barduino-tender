@@ -1,4 +1,16 @@
 require 'ftools'
+begin
+  Kernel::require "serialport"
+rescue
+  puts "ERROR: requires ruby-serialport, available as a ruby gem"
+  exit
+end
+
+# port_str = "/dev/tty.usbserial-A3000WS0"  #may be different for you
+baud_rate = 9600
+data_bits = 8
+stop_bits = 1
+parity = SerialPort::NONE
 
 def usage
   puts "You must specify a drink."
