@@ -1,36 +1,35 @@
 require 'ftools'
 
 def usage
-	puts "You must specify a drink."
-	exit(1)
+  puts "You must specify a drink."
+  exit(1)
 end
 
 class Numeric
   def ounces(ingredient)
-		Drink.dispense(ingredient, self)
-	end
-	alias :ounce :ounces
+    Drink.dispense(ingredient, self)
+  end
+  alias :ounce :ounces
 end
 
 class Drink
-	@ingredients = {"vodka" => 1, "orange_juice" => 2}
-	
-	def drink(name, &block)
+  @ingredients = {"vodka" => 1, "orange_juice" => 2}
+  def drink(name, &block)
     puts "#{name}"
     block.call
-	end
+  end	
+
+  def serve_in(glass)
+    puts "Please use a #{glass} or one similar to it."
+  end
 	
-	def serve_in(glass)
-		puts "Please use a #{glass} or one similar to it."
-	end
+  def ingredients(&block)
+    block.call
+  end
 	
-	def ingredients(&block)
-		block.call
-	end
-	
-	def self.dispense(ingredient, amount)
-		  puts "Pouring #{amount} ounces of #{ingredient} from pump #{@ingredients[ingredient.to_s]}"
-	end
+  def self.dispense(ingredient, amount)
+    puts "Pouring #{amount} ounces of #{ingredient} from pump #{@ingredients[ingredient.to_s]}"
+  end
 end
 
 usage unless ARGV[0]
