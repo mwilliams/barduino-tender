@@ -6,12 +6,6 @@ rescue
   exit
 end
 
-# port_str = "/dev/tty.usbserial-A3000WS0"  #may be different for you
-baud_rate = 9600
-data_bits = 8
-stop_bits = 1
-parity = SerialPort::NONE
-
 def usage
   puts "You must specify a drink."
   exit(1)
@@ -26,6 +20,13 @@ end
 
 class Drink
   @ingredients = {"vodka" => 1, "orange_juice" => 2}
+  baud_rate = 9600 
+  data_bits = 8
+  port_str = "/dev/ttyUSB0"  #may be different for you  
+  parity = SerialPort::NONE
+  stop_bits = 1 
+  @sp = SerialPort.new(port_str, baud_rate, data_bits, stop_bits, parity)
+  
   def drink(name, &block)
     puts "#{name}"
     block.call
@@ -40,7 +41,11 @@ class Drink
   end
 	
   def self.dispense(ingredient, amount)
-    puts "Pouring #{amount} ounces of #{ingredient} from pump #{@ingredients[ingredient.to_s]}"
+    puts "Currently pouring #{amount} ounces of #{ingredient} from pump #{@ingredients[ingredient.to_s]}"
+    amount.times do
+      @sp.putc @ingredients[ingredient.to_s].to_s
+      sleep 2
+    end
   end
 end
 
