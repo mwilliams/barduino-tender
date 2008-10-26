@@ -44,7 +44,7 @@ class Drink
     puts "Currently pouring #{amount} ounces of #{ingredient} from pump #{@ingredients[ingredient.to_s]}"
     amount.times do
       @sp.putc @ingredients[ingredient.to_s].to_s
-      sleep 2
+      sleep 3
     end
   end
 end
